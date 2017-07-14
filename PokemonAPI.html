@@ -21,20 +21,97 @@
             console.log(requestData)
             // for (var i = 0; i < requestData.results.length; i++) {
             //     if (requestData[i] == sP) {
-                    document.getElementById("Pokedex Number").innerHTML = "id:" + sP;
-                    document.getElementById("Name").innerHTML = "name:" + requestData.results[sP-1].name;
-                    // document.getElementById("house").innerHTML = "House:" + requestData[i].hse;
-                    // document.getElementById("years").innerHTML = "Reign:" + requestData[i].yrs;
+            document.getElementById("Pokedex Number").innerHTML = "id:" + sP;
+            document.getElementById("Name").innerHTML = "name:" + requestData.results[sP - 1].name;
+            // document.getElementById("house").innerHTML = "House:" + requestData[i].hse;
+            // document.getElementById("years").innerHTML = "Reign:" + requestData[i].yrs;
             //     }
             // }
 
 
+        }
+        function typeType() {
+            var requestData = request.response;
+            var sP = document.getElementById("TB1").value;
+            console.log(requestData)
+            let atk = document.getElementById("atkElem").value;
+            let def = document.getElementById("defElem").value;
+
+            var types = {
+                normal: [1, 1, 1, 1, 1, 1, 0.5, 1, 0, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                fighting: [1, 2, 1, 0.5, 0.5, 1, 2, 0.5, 0, 2, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5],
+                flying: [1, 1, 2, 1, 1, 1, 0.5, 2, 1, 0.5, 1, 1, 2, 0.5, 1, 1, 1, 1, 1],
+                poison: [1, 1, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 0, 1, 1, 2, 1, 1, 1, 1, 1, 2],
+                ground: [1, 1, 1, 0, 2, 1, 2, 0.5, 1, 2, 2, 1, 0.5, 2, 1, 1, 1, 1, 1],
+                rock: [1, 1, 0.5, 2, 1, 0.5, 1, 2, 0.5, 1, 2, 2, 1, 0.5, 2, 1, 1, 1, 1, 1],
+                bug: [1, 1, 0.5, 0.5, 0.5, 1, 1, 1, 0.5, 0.5, 0.5, 1, 2, 1, 2, 1, 1, 2, 0.5],
+                ghost: [1, 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 1],
+                steel: [1, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 1, 2, 1, 1, 2],
+                fire: [1, 1, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5, 0.5, 2, 1, 1, 2, 0.5, 1, 1],
+                water: [1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 0.5, 0.5, 2, 1, 1, 2, 0.5, 1, 1],
+                grass: [1, 1, 1, 0.5, 0.5, 2, 2, 0.5, 1, 0.5, 0.5, 2, 0.5, 1, 1, 1, 0.5, 1, 1],
+                electric: [1, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 2, 0.5, 0.5, 1, 1, 0.5, 1, 1],
+                psychic: [1, 1, 2, 1, 2, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 0.5, 1, 1, 0, 1],
+                ice: [1, 1, 1, 2, 1, 2, 1, 1, 1, 0.5, 0.5, 0.5, 2, 1, 1, 0.5, 2, 1, 1],
+                dragon: [1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 2, 1, 0],
+                dark: [1, 1, 0.5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5],
+                fairy: [1, 1, 2, 1, 0.5, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, 2, 2, 1],
+            }
+
+            document.getElementById("res").innerHTML = types[atk][def]
         }
     </Script>
     <input type="textbox" id="TB1" placeholder="Enter Pokedex Number">
     <button onclick="searchPokemon()">Search</button>
     <p id="Pokedex Number"></p>
     <p id="Name"></p>
+    <div class="dropdown">
+
+
+        <button onclick="typeType()" class="dropbtn">Dropdown</button>
+        <select id="atkElem">
+        <option value = "normal">Normal</option>
+        <option value = "fighting">Fighting</option>
+        <option value = "flying">Flying</option>
+        <option value = "poison">Poison</option>
+        <option value = "ground">Ground</option>
+        <option value = "rock">Rock</option>
+        <option value = "bug">Bug</option>
+        <option value = "ghost">Ghost</option>
+        <option value = "steel">Steel</option>
+        <option value = "fire">Fire</option>
+        <option value = "water">Water</option>
+        <option value = "grass">Grass</option>
+        <option value = "elctric">Elctric</option>
+        <option value = "psychic">Psychic</option>
+        <option value = "ice">Ice</option>
+        <option value = "dragon">Dragon</option>
+        <option value = "dark">Dark</option>
+        <option value = "fairy">Fairy</option>
+        </select>
+        <select id="defElem">
+        <option value = "1">Normal</option>
+        <option value = "2">Fighting</option>
+        <option value = "3">Flying</option>
+        <option value = "4">Poison</option>
+        <option value = "5">Ground</option>
+        <option value = "6">Rock</option>
+        <option value = "7">Bug</option>
+        <option value = "8">Ghost</option>
+        <option value = "9">Steel</option>
+        <option value = "10">Fire</option>
+        <option value = "11">Water</option>
+        <option value = "12">Grass</option>
+        <option value = "13">Elctric</option>
+        <option value = "14">Psychic</option>
+        <option value = "15">Ice</option>
+        <option value = "16">Dragon</option>
+        <option value = "17">Dark</option>
+        <option value = "18">Fairy</option>
+        </select>
+    </div>
+
+    <h1 id="res"></h1>
 </body>
 
 </html>
