@@ -1,0 +1,54 @@
+<html>
+
+<head></head>
+
+<body>
+
+    <script>
+        var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
+        var request = new XMLHttpRequest();
+        request.open("GET", requestURL);
+        request.responseType = "json"
+        request.send();
+        request.onload = function() {
+            var requestData = request.response;
+            var myH1 = document.createElement("h1");
+            var squadName = requestData['squadName'];
+            var homeTown = requestData['homeTown'];
+            var formed = requestData['formed'];
+            var secretBase = requestData['secretBase'];
+            var active = requestData['active'];
+            var members = requestData['members'];
+
+            var eSquadName =document.createElement("p");
+            var eHomeTown =document.createElement("p");
+            var eFormed =document.createElement("p");
+            var eSecretBase =document.createElement("p");
+            var eActive =document.createElement("p");
+
+            var tSquadName = document.createTextNode("SquadName: "+ squadName);
+            var tHomeTown = document.createTextNode("Hometown: "+ homeTown);
+            var tFormed = document.createTextNode("Formed: "+ formed);
+            var tSecretBase = document.createTextNode("SecretBase: "+ secretBase);
+            var tActive = document.createTextNode("Active: "+ active);
+
+            eSquadName.appendChild(tSquadName);
+            eHomeTown.appendChild(tHomeTown);
+            eFormed.appendChild(tFormed);
+            eSecretBase.appendChild(tSecretBase);
+            eActive.appendChild(tActive);
+
+
+            myH1.textContent = requestData["squadName<br>","homeTown<br>","formed<br>","secretBase<br>","active<br>","members<br>" ];
+            document.getElementsByTagName("body")[0].appendChild(myH1);
+            document.getElementsByTagName("body")[0].appendChild(eSquadName);
+            document.getElementsByTagName("body")[0].appendChild(eHomeTown);
+            document.getElementsByTagName("body")[0].appendChild(eFormed);
+            document.getElementsByTagName("body")[0].appendChild(eSecretBase);
+            document.getElementsByTagName("body")[0].appendChild(eActive);
+
+        }
+    </Script>
+</body>
+
+</html>

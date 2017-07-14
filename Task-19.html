@@ -1,0 +1,35 @@
+<html>
+
+<head></head>
+
+<body>
+
+    <script>
+        var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
+        var request = new XMLHttpRequest();
+        request.open("GET", requestURL);
+        request.responseType = "json"
+        request.send();
+         function searchK() {
+            var requestData = request.response;
+            var sK = document.getElementById("TB1").value;
+            console.log(requestData)
+            for (var i = 0; i < requestData.length; i++){
+                if (requestData[i].nm == sK) {
+                    document.getElementById("name").innerHTML = "Name:" + requestData[i].nm;
+                    document.getElementById("country").innerHTML = "Country:" + requestData[i].cty;
+                    document.getElementById("house").innerHTML = "House:" + requestData[i].hse;
+                    document.getElementById("years").innerHTML = "Reign:" + requestData[i].yrs;
+                }
+            }
+        }
+    </Script>
+    <input type ="textbox" id="TB1" placeholder="Who's the kingdom of the realm?">
+    <button onclick="searchK()">Search</button>
+    <p id="name"></p>
+    <p id="country"></p>
+    <p id="house"></p>
+    <p id="years"></p>
+</body>
+
+</html>

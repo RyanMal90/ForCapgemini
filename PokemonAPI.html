@@ -1,0 +1,40 @@
+<html>
+
+<head></head>
+
+<body>
+
+    <script>
+        var requestURL = " http://pokeapi.co/api/v2/pokemon/";
+        var request = new XMLHttpRequest();//paired with requestURL to get url
+        var Details = [];
+        request.open("GET", requestURL);
+        request.responseType = "json"
+        request.send();
+
+        function searchPokemon() {
+            var requestData = request.response;//for getting a respone from the query
+            var sP = document.getElementById("TB1").value;//gets value of input to textbox
+            // var details = {"Pokedex Number": requestData.id, "Name": name};
+            // Details.push(details);
+            // document.write(Details);
+            console.log(requestData)
+            // for (var i = 0; i < requestData.results.length; i++) {
+            //     if (requestData[i] == sP) {
+                    document.getElementById("Pokedex Number").innerHTML = "id:" + sP;
+                    document.getElementById("Name").innerHTML = "name:" + requestData.results[sP-1].name;
+                    // document.getElementById("house").innerHTML = "House:" + requestData[i].hse;
+                    // document.getElementById("years").innerHTML = "Reign:" + requestData[i].yrs;
+            //     }
+            // }
+
+
+        }
+    </Script>
+    <input type="textbox" id="TB1" placeholder="Enter Pokedex Number">
+    <button onclick="searchPokemon()">Search</button>
+    <p id="Pokedex Number"></p>
+    <p id="Name"></p>
+</body>
+
+</html>

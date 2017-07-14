@@ -1,0 +1,147 @@
+<!--
+
+var newinput = input.split(" ")
+
+in this case e.g. input is
+
+"create ford focus sw08tno 0"
+
+switch(newinput[0])
+
+case create
+>> create a car
+
+case checkin
+>> check in a car
+
+etc
+
+    -->
+
+<html>
+
+<head></head>
+
+<body>
+
+    <script>
+        var garagecontents = []
+        var cars = []
+        function searchG() {
+            //var requestData = request.response;//for getting a respone from the query
+            var regNum = document.getElementById("TB1").value;//gets value of input to textbox
+            var make = document.getElementById("TB2").value;
+            var model = document.getElementById("TB3").value;
+            var fault = document.getElementById("TB4").value;
+
+            var car = { "regNum": regNum, "make": make, "model": model, "fault": fault }
+            cars.push(car);
+            console.log(cars);
+
+        }
+        function contents() {
+            var container = document.getElementById("content");
+            container.innerHTML = ""
+            for (var i = 0; i < cars.length; i++) {
+                container.innerHTML += cars[i].regNum + "<br>";
+                container.innerHTML += cars[i].make + "<br>";
+                container.innerHTML += cars[i].model + "<br>";
+                container.innerHTML += (cars[i].fault * 90) + "<br>";
+            }
+        }
+        function checkOut() {
+            var regNum = document.getElementById("TB1").value;
+            cars = cars.filter(function (car) {
+                return car.regNum != regNum
+            })
+        }
+        function admin() {
+            var interFace = document.getElementById("interface");
+            var input = document.getElementById("TB5").value;
+            var newinput = input.split(" ");
+            switch (newinput[0]) {
+                case "create": createVehicle(newinput);
+                    break;
+                case "check": if (newinput[1] = "in") {
+                    checkInFunction(newinput)
+
+                }
+                else if (newinput[1] = "out") {
+                    checkOutFunction(newinput)
+
+                }
+                else {
+                    alert("Something went wrong, returning back to main menu. ")
+                }
+                    break;
+                case "output": outFunc();
+                    break;
+                default: alert("Invalid command")
+                break;
+
+            }
+        }
+        function createVehicle(newinput) {
+            var regNum = newinput[1];
+            var make = newinput[2];
+            var model = newinput[3];
+            var fault = newinput[4];
+
+            var car = { "regNum": regNum, "make": make, "model": model, "fault": fault }
+            cars.push(car);
+            console.log(cars);
+
+        }
+        function checkInFunction(newinput) {
+            for (i = 0; i < cars.length; i++) {
+                if (cars[i].regNum == newinput[2]) {
+                    garagecontents.push(cars[i])
+                    alert("Checked in" + cars[i].regNum)
+                }
+            }
+        }
+        function outFunc() {
+            var container = document.getElementById("content");
+            container.innerHTML = ""
+            for (var i = 0; i < garagecontents.length; i++) {
+                container.innerHTML += garagecontents[i].regNum + "<br>";
+                container.innerHTML += garagecontents[i].make + "<br>";
+                container.innerHTML += garagecontents[i].model + "<br>";
+                container.innerHTML += (garagecontents[i].fault * 90) + "<br>";
+            }
+        }
+            function checkOut(newinput) {
+                var garageLength = garagecontents.length
+                for (j = 0; j < garagecontents.length; j++) {
+                    if (garagecontents[i].regNum = newinput[2]) {
+                        garagecontents.splice(j, 1)
+                        j = garageLength
+                        alert("Checked out," + newinput[2])
+                    }
+                }
+            }
+
+    </Script>
+    <input type="textbox" id="TB1" value="PE15WMA"><br>
+    <input type="textbox" id="TB2" value="Harley Davidson"><br>
+    <input type="textbox" id="TB3" value="Iron 883 XL"><br>
+    <input type="textbox" id="TB4" value="3"><br>
+
+
+    <button onclick="searchG()">Check in</button>
+    <button onclick="contents()">Show all</button>
+    <button onclick="checkOut()">Remove</button>
+
+
+
+    <p id="Reg"></p>
+    <p id="Make"></p>
+    <p id="Model"></p>
+
+    <div id="content"></div>
+    <div id="interface"></div>
+    <input type="textbox" id="TB5" value="TESTY">
+    <button onclick="admin()">Enter</button>
+</body>
+
+</html>

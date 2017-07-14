@@ -1,0 +1,19 @@
+<html>
+
+<head></head>
+
+<body>
+    <p id="p1">Hello World!</p>
+    Main News: <input type="text" id="text" />
+    <input type="button" id="button" value="Update" />
+    <script>
+        var a = document.getElementById("p1").innerHTML = "This is a SMALL paragraph!";
+        var button = document.getElementById("button");
+        var text = document.getElementById("text")
+        button.onclick = function () {
+            p1.textContent = text.value;
+        }
+    </Script>
+</body>
+
+</html>

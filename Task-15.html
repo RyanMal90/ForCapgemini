@@ -1,0 +1,23 @@
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        function numFreq(a) {
+            var total = 0;
+            c = a.split("")
+            for (var i = 0; i < c.length; i++) {
+                if (c[i] == c[i + 1]) {
+                    if (c[i] == c[i + 2]) {
+                        total += 1
+                    }
+
+                }
+            } document.write(total)
+        } numFreq("aaabbbccc")
+        numFreq("abcxxxbca")
+    </Script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        function fizzBuzz() {
+            var a = ""
+            for (i = 1; i <= 100; i++) {
+                if (i % 5 === 0 && i % 3 === 0) {
+                    a += "FizzBuzz<br>"
+                } else if (i % 3 === 0) {
+                    a += "Fizz<br>"
+                } else if (i % 5 === 0) {
+                    a += "Buzz<br>"
+
+                } else a +=i + "<br>"
+
+            }
+            document.write(a)
+        }
+        fizzBuzz()
+    </Script>
+</body>
+
+</html>
